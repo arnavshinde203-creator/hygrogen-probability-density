@@ -18,17 +18,18 @@ def rp(n,l,r):                        #radial probability density
     return (r**(2))*(abs(Rnl)**2)
 
 
-def Ylm(l,m,theta,phi):
+def Ylm(l,m,theta,phi):                               #spherical harmonic wavefunction
     norm = np.sqrt(((2*l+1)/(4*np.pi))*(factorial(l-m)/factorial(l+m))) 
     x = np.cos(theta)
     Legendre_polynomial = lpmv(m,l,x)
 
     return norm*Legendre_polynomial*np.exp(1j*m*phi)
 
-def angular_prob(l,m,theta,phi):
+def angular_prob(l,m,theta,phi):               #spherical harmonic probability density
     Y = Ylm(l,m,theta,phi)
     return np.abs(Y)**2
 
+#plotting
 x = np.linspace(-30,30,2000)
 z = np.linspace(-30,30,2000)
 X,Z = np.meshgrid(x,z)
@@ -41,7 +42,7 @@ n,l,m = 3,2,0
 Rnl = R(n,l,r)
 Y_prob = Ylm(l,m,theta,phi)
 
-psi_2 = np.abs(Rnl*Y_prob)**2
+psi_2 = np.abs(Rnl*Y_prob)**2    #probability density
 
 plt.figure(figsize=(10,10))
 plt.imshow(np.sqrt(psi_2),extent=[-20,20,-20,20],origin='lower',cmap='inferno')
