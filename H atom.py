@@ -48,7 +48,7 @@ plt.figure(figsize=(10,10))
 plt.imshow(np.sqrt(psi_2),extent=[-20,20,-20,20],origin='lower',cmap='inferno')
 plt.xlabel("x")
 plt.ylabel("z")
-plt.title("Hydrogen orbital density")
+plt.title(f'Hydrogen orbital density, n ={n}, l={l}, m={m}')
 plt.colorbar(label="|ψ|²")
 plt.show()
 
